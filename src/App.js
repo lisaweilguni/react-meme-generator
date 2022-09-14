@@ -45,50 +45,50 @@ function App() {
     <div css={divStyles}>
       <div className="inputArea">
         <h1>Create your custom meme</h1>
+        <div className="inputFields">
+          {/*Input Section Top Text*/}
+          <label htmlFor="top-text">Top text</label>
 
-        {/*Input Section Top Text*/}
-        <label htmlFor="top-text">Top text</label>
+          <input
+            id="top-text"
+            value={topText}
+            placeholder="Hello"
+            onChange={(event) => {
+              setTopText(event.currentTarget.value);
+              const topText = event.currentTarget.value;
+            }}
+          />
+          <br />
+          <br />
+          {/*Input Section Bottom Text*/}
+          <label htmlFor="bottom-text">Bottom text</label>
 
-        <input
-          id="top-text"
-          value={topText}
-          placeholder="Hello"
-          onChange={(event) => {
-            setTopText(event.currentTarget.value);
-            const topText = event.currentTarget.value;
-          }}
-        />
-        <br />
-        <br />
-        {/*Input Section Bottom Text*/}
-        <label htmlFor="bottom-text">Bottom text</label>
+          <input
+            id="bottom-text"
+            value={bottomText}
+            placeholder="Hello"
+            onChange={(event) => {
+              setBottomText(event.currentTarget.value);
+              const bottomText = event.currentTarget.value;
+            }}
+          />
 
-        <input
-          id="bottom-text"
-          value={bottomText}
-          placeholder="Hello"
-          onChange={(event) => {
-            setBottomText(event.currentTarget.value);
-            const bottomText = event.currentTarget.value;
-          }}
-        />
+          <br />
+          <br />
 
-        <br />
-        <br />
-
-        {/*Input Section Template*/}
-        <label htmlFor="user-template">Meme template</label>
-        <select
-          id="user-template"
-          value={userTemplate}
-          onChange={(event) => {
-            setUserTemplate(event.currentTarget.value);
-            const userTemplate = event.currentTarget.value;
-          }}
-        >
-          {templateList}
-        </select>
-
+          {/*Input Section Template*/}
+          <label htmlFor="user-template">Meme template</label>
+          <select
+            id="user-template"
+            value={userTemplate}
+            onChange={(event) => {
+              setUserTemplate(event.currentTarget.value);
+              const userTemplate = event.currentTarget.value;
+            }}
+          >
+            {templateList}
+          </select>
+        </div>
         <br />
         <br />
         <button
@@ -100,9 +100,7 @@ function App() {
         >
           Preview meme
         </button>
-
         <button>Download</button>
-
         <img
           className="meme-image"
           data-test-id="meme-image"

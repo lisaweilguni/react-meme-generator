@@ -1,9 +1,5 @@
 body {
-  background: linear-gradient(
-    90deg,
-    hsla(312, 66%, 76%, 1) 0%,
-    hsla(234, 93%, 67%, 1) 100%
-  );
+  background-image: url(frame.png);
 }
 
 .meme-image {
@@ -13,7 +9,7 @@ body {
 }
 
 input {
-  padding: 5px;
+  padding: 4px;
   font-size: 14px;
   font-weight: 600;
   width: 250px;
@@ -27,7 +23,7 @@ select {
   font-weight: 600;
   width: 264px;
   margin-left: 10px;
-  color: #757575;
+  color: black;
   float: right;
 }
 
@@ -39,12 +35,23 @@ label {
   color: black;
   font-weight: bold;
   float: left;
+  font-size: 1.05em;
+  margin-top: 5px;
 }
 
 .inputArea {
   margin: auto;
   width: 35%;
   border: 3px solid grey;
+  padding: 30px;
+  background: rgb(240, 236, 236, 0.8);
+  display: block;
+}
+
+.inputFields {
   padding: 20px;
-  background: white;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
