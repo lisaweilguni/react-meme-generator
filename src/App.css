@@ -1,9 +1,50 @@
-.App {
-  text-align: center;
+body {
+  background: linear-gradient(
+    90deg,
+    hsla(312, 66%, 76%, 1) 0%,
+    hsla(234, 93%, 67%, 1) 100%
+  );
 }
 
 .meme-image {
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 300px;
+  max-height: 300px;
   margin: 20px 20px 20px 20px;
+}
+
+input {
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  width: 250px;
+  margin-left: 10px;
+  float: right;
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  width: 264px;
+  margin-left: 10px;
+  color: #757575;
+  float: right;
+}
+
+h1 {
+  color: #22225e;
+}
+
+label {
+  color: black;
+  font-weight: bold;
+  float: left;
+}
+
+.inputArea {
+  margin: auto;
+  width: 35%;
+  border: 3px solid grey;
+  padding: 20px;
+  background: white;
 }
