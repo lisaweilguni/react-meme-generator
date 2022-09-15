@@ -30,7 +30,7 @@ function App() {
         console.error(e);
       }
     };
-    fetchData();
+    fetchData().catch((err) => console.log(err));
   }, []);
 
   // Create list of template names
@@ -83,7 +83,7 @@ function App() {
 
       <div className="button-section">
         <button
-          onClick={(event) => {
+          onClick={() => {
             setUserUrl(
               `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
             );
