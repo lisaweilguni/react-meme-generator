@@ -1,14 +1,6 @@
 import './App.css';
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { saveAs } from 'file-saver';
 import { useEffect, useState } from 'react';
-
-const divStyles = css`
-  color: purple;
-  text-align: center;
-  justify-content: center;
-  margin-top: 40px;
-`;
 
 function App() {
   const [topText, setTopText] = useState('');
@@ -18,6 +10,14 @@ function App() {
   );
   const [userTemplate, setUserTemplate] = useState('');
   const [data, setData] = useState([]);
+
+  // Download image function
+  function downloadImage() {
+    saveAs(
+      `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+      'image.jpg',
+    );
+  }
 
   // Fetch template
   useEffect(() => {
@@ -42,13 +42,13 @@ function App() {
   });
 
   return (
-    <div css={divStyles}>
-      <div className="inputArea">
+    <div className="wrapper">
+      <div>
         <h1>Create your custom meme</h1>
         <div className="inputFields">
-          {/*Input Section Top Text*/}
           <label htmlFor="top-text">Top text</label>
 
+          {/*Input Section Top Text*/}
           <input
             id="top-text"
             value={topText}
@@ -58,8 +58,6 @@ function App() {
               const topText = event.currentTarget.value;
             }}
           />
-          <br />
-          <br />
           {/*Input Section Bottom Text*/}
           <label htmlFor="bottom-text">Bottom text</label>
 
@@ -72,10 +70,6 @@ function App() {
               const bottomText = event.currentTarget.value;
             }}
           />
-
-          <br />
-          <br />
-
           {/*Input Section Template*/}
           <label htmlFor="user-template">Meme template</label>
           <select
@@ -89,8 +83,6 @@ function App() {
             {templateList}
           </select>
         </div>
-        <br />
-        <br />
         <button
           onClick={(event) => {
             setUserUrl(
@@ -100,7 +92,7 @@ function App() {
         >
           Preview meme
         </button>
-        <button>Download</button>
+        <button onClick={downloadImage}>Download</button>
         <img
           className="meme-image"
           data-test-id="meme-image"
