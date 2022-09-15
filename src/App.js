@@ -45,70 +45,71 @@ function App() {
   return (
     <div className="wrapper">
       <h1>Create your custom meme</h1>
-      <div className="inputFields">
-        <label htmlFor="top-text">Top text</label>
+      <form onSubmit={(e) => e.preventDefault()} action="submit">
+        <div className="inputFields">
+          <label htmlFor="top-text">Top text</label>
 
-        {/* Input Section Top Text */}
-        <input
-          id="top-text"
-          value={topText}
-          placeholder="Hello"
-          onChange={(event) => {
-            setTopText(event.currentTarget.value);
-            setUserUrl(
-              `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
-            );
-          }}
+          {/* Input Section Top Text */}
+          <input
+            id="top-text"
+            value={topText}
+            placeholder="Hello"
+            onChange={(event) => {
+              setTopText(event.currentTarget.value);
+              setUserUrl(
+                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+              );
+            }}
+          />
+          {/* Input Section Bottom Text */}
+          <label htmlFor="bottom-text">Bottom text</label>
+
+          <input
+            id="bottom-text"
+            value={bottomText}
+            placeholder="Hello"
+            onChange={(event) => {
+              setBottomText(event.currentTarget.value);
+              setUserUrl(
+                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+              );
+            }}
+          />
+          {/* Input Section Template */}
+          <label htmlFor="user-template">Meme template</label>
+          <select
+            id="user-template"
+            value={userTemplate}
+            onChange={(event) => {
+              setUserTemplate(event.currentTarget.value);
+              setUserUrl(
+                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+              );
+            }}
+          >
+            {templateList}
+          </select>
+        </div>
+        <div className="button-section">
+          <button
+            onClick={() => {
+              setUserUrl(
+                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+              );
+            }}
+          >
+            Preview meme
+          </button>
+          <button onClick={downloadImage}>Download</button>
+        </div>
+
+        <img
+          className="meme-image"
+          data-test-id="meme-image"
+          src={userUrl}
+          alt="Your meme"
         />
-        {/* Input Section Bottom Text */}
-        <label htmlFor="bottom-text">Bottom text</label>
-
-        <input
-          id="bottom-text"
-          value={bottomText}
-          placeholder="Hello"
-          onChange={(event) => {
-            setBottomText(event.currentTarget.value);
-            setUserUrl(
-              `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
-            );
-          }}
-        />
-        {/* Input Section Template */}
-        <label htmlFor="user-template">Meme template</label>
-        <select
-          id="user-template"
-          value={userTemplate}
-          onChange={(event) => {
-            setUserTemplate(event.currentTarget.value);
-            setUserUrl(
-              `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
-            );
-          }}
-        >
-          {templateList}
-        </select>
-      </div>
-
-      <div className="button-section">
-        <button
-          onClick={() => {
-            setUserUrl(
-              `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
-            );
-          }}
-        >
-          Preview meme
-        </button>
-        <button onClick={downloadImage}>Download</button>
-      </div>
-
-      <img
-        className="meme-image"
-        data-test-id="meme-image"
-        src={userUrl}
-        alt="Your meme"
-      />
+      </form>
     </div>
   );
 }
