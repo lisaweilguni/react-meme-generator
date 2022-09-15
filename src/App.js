@@ -3,10 +3,10 @@ import { saveAs } from 'file-saver';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [topText, setTopText] = useState('');
-  const [bottomText, setBottomText] = useState('');
+  const [topText, setTopText] = useState('create your');
+  const [bottomText, setBottomText] = useState('own meme');
   const [userUrl, setUserUrl] = useState(
-    'https://api.memegen.link/images/success/create your/meme.png',
+    `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
   );
   const [userTemplate, setUserTemplate] = useState('success');
   const [data, setData] = useState([]);
