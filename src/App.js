@@ -55,6 +55,9 @@ function App() {
           placeholder="Hello"
           onChange={(event) => {
             setTopText(event.currentTarget.value);
+            setUserUrl(
+              `https://api.memegen.link/images/success/${topText}/meme.png`,
+            );
           }}
         />
         {/* Input Section Bottom Text */}
@@ -66,6 +69,9 @@ function App() {
           placeholder="Hello"
           onChange={(event) => {
             setBottomText(event.currentTarget.value);
+            setUserUrl(
+              `https://api.memegen.link/images/success/${topText}/${bottomText}.png`,
+            );
           }}
         />
         {/* Input Section Template */}
@@ -75,6 +81,9 @@ function App() {
           value={userTemplate}
           onChange={(event) => {
             setUserTemplate(event.currentTarget.value);
+            setUserUrl(
+              `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+            );
           }}
         >
           {templateList}
