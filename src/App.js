@@ -8,7 +8,7 @@ function App() {
   const [userUrl, setUserUrl] = useState(
     'https://api.memegen.link/images/success/create your/meme.png',
   );
-  const [userTemplate, setUserTemplate] = useState('');
+  const [userTemplate, setUserTemplate] = useState('success');
   const [data, setData] = useState([]);
 
   // Download image function
@@ -56,7 +56,7 @@ function App() {
           onChange={(event) => {
             setTopText(event.currentTarget.value);
             setUserUrl(
-              `https://api.memegen.link/images/success/${topText}/meme.png`,
+              `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
             );
           }}
         />
@@ -70,7 +70,7 @@ function App() {
           onChange={(event) => {
             setBottomText(event.currentTarget.value);
             setUserUrl(
-              `https://api.memegen.link/images/success/${topText}/${bottomText}.png`,
+              `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
             );
           }}
         />
