@@ -3,12 +3,12 @@ import { saveAs } from 'file-saver';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [topText, setTopText] = useState('create your');
-  const [bottomText, setBottomText] = useState('own meme');
-  const [userUrl, setUserUrl] = useState(
-    `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
-  );
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
   const [userTemplate, setUserTemplate] = useState('success');
+  const [userUrl, setUserUrl] = useState(
+    `https://api.memegen.link/images/${userTemplate}/create your/meme.png`,
+  );
   const [data, setData] = useState([]);
 
   // Download image function
@@ -55,9 +55,10 @@ function App() {
             value={topText}
             placeholder="Hello"
             onChange={(event) => {
-              setTopText(event.currentTarget.value);
+              const newTopText = event.currentTarget.value;
+              setTopText(newTopText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${userTemplate}/${newTopText}/meme.png`,
               );
             }}
           />
@@ -69,9 +70,10 @@ function App() {
             value={bottomText}
             placeholder="Hello"
             onChange={(event) => {
-              setBottomText(event.currentTarget.value);
+              const newBottomText = event.currentTarget.value;
+              setBottomText(newBottomText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${userTemplate}/${topText}/${newBottomText}.png`,
               );
             }}
           />
@@ -81,9 +83,10 @@ function App() {
             id="user-template"
             value={userTemplate}
             onChange={(event) => {
-              setUserTemplate(event.currentTarget.value);
+              const newUserTemplate = event.currentTarget.value;
+              setUserTemplate(newUserTemplate);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${newUserTemplate}/${topText}/${bottomText}.png`,
               );
             }}
           >
