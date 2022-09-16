@@ -61,7 +61,7 @@ function App() {
               setTopText(newTopText);
               setUserUrl(
                 `https://api.memegen.link/images/${userTemplate}/${newTopText}/meme.png`,
-              );
+              ).replaceAll('_', ' ');
             }}
           />
           {/* Input Section Bottom Text */}
@@ -111,9 +111,7 @@ function App() {
           <img
             className="meme-image"
             data-test-id="meme-image"
-            src={
-              userUrl.includes('%20') ? userUrl.replaceAll('%20', ' ') : userUrl
-            }
+            src={userUrl.replaceAll('%20', '_')}
             alt="Your meme"
           />
         </div>
