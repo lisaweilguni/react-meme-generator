@@ -86,7 +86,10 @@ function App() {
               const newUserTemplate = event.currentTarget.value;
               setUserTemplate(newUserTemplate);
               setUserUrl(
-                `https://api.memegen.link/images/${newUserTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${newUserTemplate}/${topText.replaceAll(
+                  '%20',
+                  ' ',
+                )}/${bottomText}.png`,
               );
             }}
           >
@@ -97,7 +100,10 @@ function App() {
           <button
             onClick={() => {
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${userTemplate}/${topText.replaceAll(
+                  '%20',
+                  ' ',
+                )}/${bottomText}.png`,
               );
             }}
           >
