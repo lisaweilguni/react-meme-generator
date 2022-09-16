@@ -13,6 +13,17 @@ function App() {
   );
   const [data, setData] = useState([]);
 
+  // Clean code
+  function cleanInput(input) {
+    let cleanString = input.replaceAll('?', '~q');
+    cleanString = cleanString.replaceAll('&', '~a');
+    cleanString = cleanString.replaceAll('%', '~p');
+    cleanString = cleanString.replaceAll(' ', '_');
+    cleanString = cleanString.replaceAll('#', '~h');
+    cleanString = cleanString.replaceAll('/', '~s');
+    return cleanString;
+  }
+
   // Download image function
   function downloadImage() {
     saveAs(
@@ -60,7 +71,9 @@ function App() {
               const newTopText = event.currentTarget.value;
               setTopText(newTopText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${newTopText}/meme.png`,
+                `https://api.memegen.link/images/${cleanInput(
+                  userTemplate,
+                )}/${cleanInput(newTopText)}/meme.png`,
               ).replaceAll('_', ' ');
             }}
           />
@@ -75,7 +88,9 @@ function App() {
               const newBottomText = event.currentTarget.value;
               setBottomText(newBottomText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${newBottomText}.png`,
+                `https://api.memegen.link/images/${cleanInput(
+                  userTemplate,
+                )}/${cleanInput(topText)}/${cleanInput(newBottomText)}.png`,
               );
             }}
           />
@@ -88,7 +103,9 @@ function App() {
               const newUserTemplate = event.currentTarget.value;
               setUserTemplate(newUserTemplate);
               setUserUrl(
-                `https://api.memegen.link/images/${newUserTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${cleanInput(
+                  newUserTemplate,
+                )}/${cleanInput(topText)}/${cleanInput(bottomText)}.png`,
               );
             }}
           >
@@ -99,7 +116,9 @@ function App() {
           <button
             onClick={() => {
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${cleanInput(
+                  userTemplate,
+                )}/${cleanInput(topText)}/${cleanInput(bottomText)}.png`,
               );
             }}
           >
@@ -111,7 +130,7 @@ function App() {
           <img
             className="meme-image"
             data-test-id="meme-image"
-            src={userUrl.replaceAll('%20', '_')}
+            src={userUrl}
             alt="Your meme"
           />
         </div>
