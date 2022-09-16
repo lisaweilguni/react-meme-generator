@@ -58,7 +58,10 @@ function App() {
               const newTopText = event.currentTarget.value;
               setTopText(newTopText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${newTopText}/meme.png`,
+                `https://api.memegen.link/images/${userTemplate.replaceAll(
+                  '%20',
+                  ' ',
+                )}/${newTopText}/meme.png`,
               );
             }}
           />
@@ -73,7 +76,10 @@ function App() {
               const newBottomText = event.currentTarget.value;
               setBottomText(newBottomText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${newBottomText}.png`,
+                `https://api.memegen.link/images/${userTemplate.replaceAll(
+                  '%20',
+                  ' ',
+                )}/${topText}/${newBottomText}.png`,
               );
             }}
           />
@@ -86,7 +92,10 @@ function App() {
               const newUserTemplate = event.currentTarget.value;
               setUserTemplate(newUserTemplate);
               setUserUrl(
-                `https://api.memegen.link/images/${newUserTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${newUserTemplate.replaceAll(
+                  '%20',
+                  ' ',
+                )}/${topText}/${bottomText}.png`,
               );
             }}
           >
@@ -97,7 +106,10 @@ function App() {
           <button
             onClick={() => {
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${userTemplate.replaceAll(
+                  '%20',
+                  ' ',
+                )}/${topText}/${bottomText}.png`,
               );
             }}
           >
@@ -105,13 +117,14 @@ function App() {
           </button>
           <button onClick={downloadImage}>Download</button>
         </div>
-
-        <img
-          className="meme-image"
-          data-test-id="meme-image"
-          src={userUrl}
-          alt="Your meme"
-        />
+        <div className="img-wrapper">
+          <img
+            className="meme-image"
+            data-test-id="meme-image"
+            src={userUrl}
+            alt="Your meme"
+          />
+        </div>
       </form>
     </div>
   );
