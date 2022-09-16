@@ -2,8 +2,6 @@ import './App.css';
 import { saveAs } from 'file-saver';
 import { useEffect, useState } from 'react';
 
-// .replaceAll('%20',' ',)
-
 function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
@@ -21,6 +19,7 @@ function App() {
     cleanString = cleanString.replaceAll(' ', '_');
     cleanString = cleanString.replaceAll('#', '~h');
     cleanString = cleanString.replaceAll('/', '~s');
+    cleanString = cleanString.replaceAll('&20', '_');
     return cleanString;
   }
 
@@ -74,7 +73,7 @@ function App() {
                 `https://api.memegen.link/images/${cleanInput(
                   userTemplate,
                 )}/${cleanInput(newTopText)}/meme.png`,
-              ).replaceAll('_', ' ');
+              );
             }}
           />
           {/* Input Section Bottom Text */}
