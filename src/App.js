@@ -56,12 +56,9 @@ function App() {
             placeholder="Hello"
             onChange={(event) => {
               const newTopText = event.currentTarget.value;
-              setTopText(newTopText);
+              setTopText(newTopText.replaceAll('%20', ' '));
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate.replaceAll(
-                  '%20',
-                  ' ',
-                )}/${newTopText}/meme.png`,
+                `https://api.memegen.link/images/${userTemplate}/${newTopText}/meme.png`,
               );
             }}
           />
@@ -76,10 +73,7 @@ function App() {
               const newBottomText = event.currentTarget.value;
               setBottomText(newBottomText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate.replaceAll(
-                  '%20',
-                  ' ',
-                )}/${topText}/${newBottomText}.png`,
+                `https://api.memegen.link/images/${userTemplate}/${topText}/${newBottomText}.png`,
               );
             }}
           />
@@ -92,10 +86,7 @@ function App() {
               const newUserTemplate = event.currentTarget.value;
               setUserTemplate(newUserTemplate);
               setUserUrl(
-                `https://api.memegen.link/images/${newUserTemplate.replaceAll(
-                  '%20',
-                  ' ',
-                )}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${newUserTemplate}/${topText}/${bottomText}.png`,
               );
             }}
           >
@@ -106,10 +97,7 @@ function App() {
           <button
             onClick={() => {
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate.replaceAll(
-                  '%20',
-                  ' ',
-                )}/${topText}/${bottomText}.png`,
+                `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
               );
             }}
           >
