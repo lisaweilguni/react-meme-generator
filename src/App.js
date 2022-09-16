@@ -2,6 +2,8 @@ import './App.css';
 import { saveAs } from 'file-saver';
 import { useEffect, useState } from 'react';
 
+// .replaceAll('%20',' ',)
+
 function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
@@ -58,10 +60,7 @@ function App() {
               const newTopText = event.currentTarget.value;
               setTopText(newTopText);
               setUserUrl(
-                `https://api.memegen.link/images/${userTemplate}/${newTopText.replaceAll(
-                  '%20',
-                  ' ',
-                )}/meme.png`,
+                `https://api.memegen.link/images/${userTemplate}/${newTopText}/meme.png`,
               );
             }}
           />
@@ -112,7 +111,9 @@ function App() {
           <img
             className="meme-image"
             data-test-id="meme-image"
-            src={userUrl}
+            src={
+              userUrl.includes('%20') ? userUrl.replaceAll('%20', ' ') : userUrl
+            }
             alt="Your meme"
           />
         </div>
