@@ -72,7 +72,7 @@ function App() {
               setUserUrl(
                 `https://api.memegen.link/images/${cleanInput(
                   userTemplate,
-                )}/${cleanInput(newTopText)}/meme.png`,
+                )}/${cleanInput(newTopText)}/${cleanInput(bottomText)}.png`,
               );
             }}
           />
