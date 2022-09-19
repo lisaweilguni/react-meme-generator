@@ -11,26 +11,6 @@ function App() {
   );
   const [data, setData] = useState([]);
 
-  // Clean code
-  function cleanInput(input) {
-    let cleanString = input.replaceAll('?', '~q');
-    cleanString = cleanString.replaceAll('&', '~a');
-    cleanString = cleanString.replaceAll('%', '~p');
-    cleanString = cleanString.replaceAll(' ', '_');
-    cleanString = cleanString.replaceAll('#', '~h');
-    cleanString = cleanString.replaceAll('/', '~s');
-    cleanString = cleanString.replaceAll('&20', '_');
-    return cleanString;
-  }
-
-  // Download image function
-  function downloadImage() {
-    saveAs(
-      `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
-      'image.jpg',
-    );
-  }
-
   // Fetch template
   useEffect(() => {
     const fetchData = async () => {
@@ -53,6 +33,26 @@ function App() {
       </option>
     );
   });
+
+  // Clean code
+  function cleanInput(input) {
+    let cleanText = input.replaceAll('?', '~q');
+    cleanText = cleanText.replaceAll('&', '~a');
+    cleanText = cleanText.replaceAll('%', '~p');
+    cleanText = cleanText.replaceAll(' ', '_');
+    cleanText = cleanText.replaceAll('#', '~h');
+    cleanText = cleanText.replaceAll('/', '~s');
+    cleanText = cleanText.replaceAll('&20', '_');
+    return cleanText;
+  }
+
+  // Download image function
+  function downloadImage() {
+    saveAs(
+      `https://api.memegen.link/images/${userTemplate}/${topText}/${bottomText}.png`,
+      'image.jpg',
+    );
+  }
 
   return (
     <div className="wrapper">
@@ -111,6 +111,7 @@ function App() {
             {templateList}
           </select>
         </div>
+        {/* Buttons */}
         <div className="button-section">
           <button
             onClick={() => {
@@ -125,6 +126,7 @@ function App() {
           </button>
           <button onClick={downloadImage}>Download</button>
         </div>
+        {/* Image */}
         <div className="img-wrapper">
           <img
             className="meme-image"
