@@ -1,3 +1,21 @@
+# React Meme Generator
+
+Meme Generator built with React.
+
+Main features:
+- Input top text
+- Input bottom text
+- Select bar with meme templates fetched from <a href="https://memegen.link/">this website</a>.
+- Preview
+- Download
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/109659918/191090884-24c9242f-0de7-4ec7-be16-e3a860851565.png)
+
+![image](https://user-images.githubusercontent.com/109659918/191091181-1c345b15-98de-4ded-a917-0324b3dc5753.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
