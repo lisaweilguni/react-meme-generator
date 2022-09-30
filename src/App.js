@@ -36,13 +36,14 @@ function App() {
 
   // Clean code
   function cleanInput(input) {
-    let cleanText = input.replaceAll('?', '~q');
-    cleanText = cleanText.replaceAll('&', '~a');
-    cleanText = cleanText.replaceAll('%', '~p');
-    cleanText = cleanText.replaceAll(' ', '_');
-    cleanText = cleanText.replaceAll('#', '~h');
-    cleanText = cleanText.replaceAll('/', '~s');
-    cleanText = cleanText.replaceAll('&20', '_');
+    const cleanText = input
+      .replaceAll('?', '~q')
+      .replaceAll('&', '~a')
+      .replaceAll('%', '~p')
+      .replaceAll(' ', '_')
+      .replaceAll('#', '~h')
+      .replaceAll('/', '~s')
+      .replaceAll('&20', '_');
     return cleanText;
   }
 
@@ -57,7 +58,7 @@ function App() {
   return (
     <div className="wrapper">
       <h1>Create your custom meme</h1>
-      <form onSubmit={(e) => e.preventDefault()} action="submit">
+      <form onSubmit={(event) => event.preventDefault()} action="submit">
         <div className="inputFields">
           <label htmlFor="top-text">Top text</label>
 
